@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     category_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'post_categories',
+    modelName: 'posts_categories',
     underscored: true,
   });
   return post_categories;
