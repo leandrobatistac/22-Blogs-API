@@ -12,8 +12,10 @@ const getUsers = async (req, res, next) => {
 
 const createUser = async (req, res, next) => {
   try {
+    const { email } = req.body;
     await userServices.createUser(req.body);
-    const token = auth.generateToken(req.body); 
+    const token = auth.generateToken(email);
+    console.log(token);
     res.status(201).json({ token: `${token}` });
   } catch (error) {
     next(error);

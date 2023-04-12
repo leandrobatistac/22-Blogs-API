@@ -6,11 +6,18 @@ const configJWT = {
   algorithm: 'HS256',
 };
 
-const generateToken = (payload) => {
-  const token = jwt.sign(payload, secretKey, configJWT);
+const generateToken = (email) => {
+  const objectEmail = { email };
+  const token = jwt.sign(objectEmail, secretKey, configJWT);
   return token;
+};
+
+const validateToken = (token) => {
+    const isValid = jwt.verify(token, secretKey);
+    return isValid;
 };
 
 module.exports = {
   generateToken,
+  validateToken,
 };
